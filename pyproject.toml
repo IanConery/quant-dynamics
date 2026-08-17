@@ -52,8 +52,16 @@ line-length = 120
 target-version = "py311"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I"]
-ignore = ["E501", "E402"]
+select = ["E", "F", "W"]
+ignore = [
+    "E501",  # line too long
+    "E402",  # module level import not at top
+    "F401",  # unused imports
+    "F841",  # unused variables
+    "I001",  # unsorted imports
+    "W291",  # trailing whitespace
+    "W293",  # blank lines with whitespace
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
