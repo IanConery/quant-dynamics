@@ -240,7 +240,7 @@ def run_backtest(
 
     predictions = _get_predictions(model, model_key, X_test, X_test_seq, task="classification")
 
-    # Bayesian Updating (Section 15.1) — refine raw predictions with sequential belief updates
+    # Bayesian Updating — refine raw predictions with sequential belief updates
     if bayesian:
         from models.bayes_updater import BayesUpdater
         bayes_cfg = BAYESIAN_UPDATING if BAYESIAN_UPDATING.get("enabled") else None

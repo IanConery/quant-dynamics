@@ -1,4 +1,4 @@
-"""Bayesian Updating Framework (Section 15.1).
+"""Bayesian Updating Framework.
 
 Sequentially updates prediction beliefs as new evidence arrives, using
 Bayes' rule to combine:

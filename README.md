@@ -101,7 +101,7 @@ python main.py backtest --interval 1d --window 72h --model ensemble --zero-commi
 python main.py backtest --interval 1d --window 72h --model ensemble --min-confidence 0.70 --min-holding-bars 3
 ```
 
-### Regime + Volatility (Phase 11)
+### Regime + Volatility
 
 ```bash
 python main.py regime-train --interval 1d --window 168h --model lightgbm
@@ -109,7 +109,7 @@ python main.py regime-predict --interval 1d --window 168h --latest 10
 python main.py volatility --interval 1d --window 168h
 ```
 
-### Real-Time Streaming (Phase 12)
+### Real-Time Streaming
 
 ```bash
 python main.py stream start --interval 1h --window 24h --model ensemble
@@ -118,7 +118,7 @@ python main.py stream drift --interval 1d --window 168h --psi-threshold 0.1
 python main.py stream config
 ```
 
-### Bot Tracker (Phase 13)
+### Bot Tracker
 
 Detect and track algorithmic trading accounts. See `bot_tracker/SUMMARY.md` for full docs.
 

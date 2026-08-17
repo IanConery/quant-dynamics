@@ -551,7 +551,7 @@ def run_regime_train(args):
     tw = window if "h" in str(window) else f"{window}h"
 
     logger.info("=" * 60)
-    logger.info(f"Phase 11: Regime-aware training ({interval}/{tw})")
+    logger.info(f"Regime-aware training ({interval}/{tw})")
     logger.info("=" * 60)
 
     df = load_processed(interval)
@@ -953,7 +953,7 @@ def main():
     bt_parser.add_argument("--regime-aware", action="store_true",
                             help="Wire regime classifier to backtest for regime-specific risk parameters")
     bt_parser.add_argument("--bayesian", action="store_true",
-                            help="Apply Bayesian belief updating to model predictions (Section 15.1)")
+                            help="Apply Bayesian belief updating to model predictions")
 
     # --- EVALUATE COMMAND ---
     eval_parser = subparsers.add_parser("evaluate", help="Evaluate trained models")
@@ -977,19 +977,19 @@ def main():
     cal_parser.add_argument("--model", default="ensemble", help="Model to calibrate")
     cal_parser.add_argument("--method", default="sigmoid", choices=["sigmoid", "isotonic"], help="Calibration method")
 
-    # --- REGIME TRAIN COMMAND (Phase 11) ---
+    # --- REGIME TRAIN COMMAND ---
     regime_parser = subparsers.add_parser("regime-train", help="Train regime classifier + regime-specific models")
     regime_parser.add_argument("--interval", required=True)
     regime_parser.add_argument("--window", required=True)
     regime_parser.add_argument("--model", default="lightgbm", choices=["lightgbm", "xgboost", "random_forest"])
 
-    # --- REGIME PREDICT COMMAND (Phase 11) ---
+    # --- REGIME PREDICT COMMAND ---
     regime_pred_parser = subparsers.add_parser("regime-predict", help="Make regime-aware predictions")
     regime_pred_parser.add_argument("--interval", required=True)
     regime_pred_parser.add_argument("--window", required=True)
     regime_pred_parser.add_argument("--latest", type=int, default=10)
 
-    # --- LABEL-TRIPLE-BARRIER COMMAND (Section 12.1) ---
+    # --- LABEL-TRIPLE-BARRIER COMMAND ---
     tb_parser = subparsers.add_parser("label-triple-barrier", help="Create triple barrier + meta-label targets")
     tb_parser.add_argument("--interval", required=True, help="Data interval (15m, 1h, 4h, 1d)")
     tb_parser.add_argument("--window", required=True, help="Prediction window (e.g., 24h)")
@@ -998,12 +998,12 @@ def main():
     tb_parser.add_argument("--horizon", type=int, default=None, help="Time horizon in bars (default: from config)")
     tb_parser.add_argument("--meta-label", action="store_true", help="Also run meta-label filter")
 
-    # --- VOLATILITY COMMAND (Phase 11) ---
+    # --- VOLATILITY COMMAND ---
     vol_parser = subparsers.add_parser("volatility", help="Train and evaluate GARCH + Kalman Filter")
     vol_parser.add_argument("--interval", required=True)
     vol_parser.add_argument("--window", required=True)
 
-    # --- STREAM COMMAND (Phase 12) ---
+    # --- STREAM COMMAND ---
     stream_parser = subparsers.add_parser("stream", help="Real-time streaming pipeline")
     stream_sub = stream_parser.add_subparsers(dest="subcommand")
 

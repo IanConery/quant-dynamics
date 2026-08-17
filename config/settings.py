@@ -141,7 +141,7 @@ CROSS_ASSET_FEATURES = {
     "beta_window": 60,
 }
 
-# BTC lead/lag features (Section 14.1)
+# BTC lead/lag features
 BTC_LEAD_LAG = {
     "enabled": True,
     "lead_bars": [1, 2, 4, 8],
@@ -153,7 +153,7 @@ BTC_LEAD_LAG = {
     "adx_period": 14,
 }
 
-# Momentum-based features (Section 14.2)
+# Momentum-based features
 MOMENTUM_TARGETS = {
     "enabled": True,
     "momentum_windows": [4, 8, 16, 24],
@@ -162,7 +162,7 @@ MOMENTUM_TARGETS = {
     "continuation_window": 20,  # rolling mean window for ratio
 }
 
-# Volatility-adjusted momentum features (Section 14.3)
+# Volatility-adjusted momentum features
 VOL_ADJ_MOMENTUM = {
     "enabled": True,
     "vol_window": 20,       # rolling volatility window
@@ -418,7 +418,7 @@ BACKTEST_CONFIG = {
     },
 }
 
-# Regime classification (Phase 11)
+# Regime classification
 REGIME_CLASSIFIER = {
     "enabled": True,
     "model_type": "lightgbm",
@@ -445,7 +445,7 @@ REGIME_CLASSIFIER = {
     },
 }
 
-# GARCH models (Phase 11)
+# GARCH models
 GARCH_CONFIG = {
     "enabled": True,
     "models": ["GARCH", "EGARCH"],
@@ -457,7 +457,7 @@ GARCH_CONFIG = {
     "volatility": "GARCH",
 }
 
-# State-space models (Phase 11)
+# State-space models
 STATE_SPACE_CONFIG = {
     "enabled": True,
     "kalman": {
@@ -472,7 +472,7 @@ STATE_SPACE_CONFIG = {
     },
 }
 
-# Custom objectives (Tier 3)
+# Custom objectives
 CUSTOM_OBJECTIVES = {
     "enabled": True,
     "regression": "huber",
@@ -480,7 +480,7 @@ CUSTOM_OBJECTIVES = {
     "huber_delta": 0.35,
 }
 
-# Dynamic ensemble weighting (Tier 3)
+# Dynamic ensemble weighting
 DYNAMIC_ENSEMBLE = {
     "enabled": True,
     "method": "recency_weighted",
@@ -490,7 +490,7 @@ DYNAMIC_ENSEMBLE = {
     "reweight_frequency": 50,
 }
 
-# Streaming / WebSocket config (Phase 12)
+# Streaming / WebSocket config
 STREAMING_CONFIG = {
     "enabled": True,
     "sources": {
@@ -585,7 +585,7 @@ try:
 except ImportError:
     DEVICE = "cpu"
 
-# Triple Barrier Method (Section 12.1)
+# Triple Barrier Method
 TRIPLE_BARRIER = {
     "enabled": True,
     "upper_barrier": _env_float("TB_UPPER_BARRIER", 0.05),
@@ -594,7 +594,7 @@ TRIPLE_BARRIER = {
     "volatility_adjusted": False,
 }
 
-# Meta-Label Filter (Section 12.1)
+# Meta-Label Filter
 META_LABEL = {
     "enabled": True,
     "stage1_model": "lightgbm",
@@ -602,7 +602,7 @@ META_LABEL = {
     "stage1_threshold": _env_float("META_LABEL_THRESHOLD", 0.55),
 }
 
-# Bayesian Updating Framework (Section 15.1)
+# Bayesian Updating Framework
 BAYESIAN_UPDATING = {
     "enabled": True,
     "prior_method": "regime",
@@ -613,7 +613,7 @@ BAYESIAN_UPDATING = {
     "max_confidence_weight": _env_float("BAYES_MAX_CONF_WEIGHT", 3.0),
 }
 
-# Regime-Specific Trading Parameters (Section 12.2)
+# Regime-Specific Trading Parameters
 REGIME_PARAMS = _env_json("REGIME_PARAMS_JSON", json.dumps({
     "bull": {
         "stop_loss_pct": 0.03,
